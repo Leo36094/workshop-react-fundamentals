@@ -7,14 +7,14 @@ const operations = {
 	'/': (left: number, right: number): number => left / right,
 }
 
-type CalculatorProps = {
+type CalculatorProps = Partial<{
 	// 🐨 make each of these optional
 	left: number
 	operator: keyof typeof operations
 	right: number
-}
+}>
 // 🐨 add defaults so if a user just uses <Calculator /> they'll get "0 + 0 = 0"
-function Calculator({ left, operator, right }: CalculatorProps) {
+function Calculator({ left = 0, operator = '+', right = 0 }: CalculatorProps) {
 	const result = operations[operator](left, right)
 	return (
 		<div>
@@ -30,10 +30,10 @@ function App() {
 		<div>
 			<h1>Calculator</h1>
 			{/* 🐨 remove the values that are not strictly necessary */}
-			<Calculator left={1} operator="+" right={2} />
-			<Calculator left={0} operator="-" right={0} />
-			<Calculator left={1} operator="*" right={0} />
-			<Calculator left={0} operator="/" right={2} />
+			<Calculator left={1} right={2} />
+			<Calculator operator="-" />
+			<Calculator left={1} operator="*" />
+			<Calculator operator="/" right={2} />
 			{/* 🦉 Sometimes passing a value that's the default is ok even if it's not
 			strictly necessary because it's more explicit and clear. But we're just
 			playing around with TypeScript and defaults here so play along please! */}

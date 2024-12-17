@@ -8,11 +8,14 @@ const operations = {
 }
 
 // 🦺 create a type called CalculatorProps
+type CalculatorProps = {
+	left: number;
+	operator: keyof typeof operations;
+	right: number;
+}
 
 // 🦺 set the type for this props argument to CalculatorProps
-// @ts-expect-error 💣 when you finish, remove this comment.
-function Calculator({ left, operator, right }) {
-	// @ts-expect-error we'll fix this one later
+function Calculator({ left, operator, right }: CalculatorProps) {
 	const result = operations[operator](left, right)
 	return (
 		<div>
