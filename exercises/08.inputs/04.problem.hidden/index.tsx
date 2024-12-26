@@ -7,6 +7,7 @@ function App() {
 	return (
 		<form action={logFormData}>
 			{/* 🐨 add a hidden input with the name "orgId" and the value "123" */}
+			<input name="orgId" value="123" type="hidden" />
 			<div>
 				<label htmlFor="accountTypeSelection">Account Type:</label>
 				<select id="accountTypeSelection" name="accountType">
